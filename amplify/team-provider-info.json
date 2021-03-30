@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-javitheweb-dev-22110-authRole",
+      "UnauthRoleArn": "arn:aws:iam::333784495915:role/amplify-javitheweb-dev-22110-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::333784495915:role/amplify-javitheweb-dev-22110-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-javitheweb-dev-22110-deployment",
+      "UnauthRoleName": "amplify-javitheweb-dev-22110-unauthRole",
+      "StackName": "amplify-javitheweb-dev-22110",
+      "StackId": "arn:aws:cloudformation:us-east-1:333784495915:stack/amplify-javitheweb-dev-22110/e3d42140-9130-11eb-acdc-0ecc4b1d1431",
+      "AmplifyAppId": "dcc0eyj9t0yb9"
+    }
+  }
+}
