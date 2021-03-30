@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "javitheweb7a8af15c": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
