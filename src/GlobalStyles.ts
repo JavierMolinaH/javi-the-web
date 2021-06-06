@@ -92,8 +92,6 @@ const styles = (theme: Theme) => ({
   }
 })
 
-function globalStyles() {
-  return null
-}
+const globalStyles = () => null
 
 export default withStyles(styles, { withTheme: true })(globalStyles)
