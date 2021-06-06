@@ -1,7 +1,7 @@
-import React, { lazy, Suspense } from 'react'
+import React, { FC, lazy, Suspense } from 'react'
 import { MuiThemeProvider, CssBaseline } from '@material-ui/core'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
+import { AmplifySignOut } from '@aws-amplify/ui-react'
 import 'fontsource-roboto'
 
 import Pace from './shared/components/Pace'
@@ -10,7 +10,7 @@ import GlobalStyles from './GlobalStyles'
 
 const LoggedOutComponent = lazy(async () => import('./logged_out/components/Main'))
 
-const App = () => (
+const App: FC = () => (
   <BrowserRouter>
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
@@ -31,4 +31,4 @@ const App = () => (
   </BrowserRouter>
 )
 
-export default withAuthenticator(App)
+export default App
