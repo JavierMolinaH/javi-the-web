@@ -1,14 +1,14 @@
-import React, { Suspense } from 'react'
+import React, { lazy, Suspense } from 'react'
 import { MuiThemeProvider, CssBaseline } from '@material-ui/core'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
 import 'fontsource-roboto'
 
 import Pace from './shared/components/Pace'
-
 import theme from './theme'
 import GlobalStyles from './GlobalStyles'
-import './App.css'
+
+const LoggedOutComponent = lazy(async () => import('./logged_out/components/Main'))
 
 const App = () => (
   <BrowserRouter>
@@ -17,16 +17,16 @@ const App = () => (
       <GlobalStyles />
       <Pace color={theme.palette.primary.light} />
       <Suspense fallback={<></>}>
+        <AmplifySignOut />
         <Switch>
-          <Route path="/c">
+          <Route path="/app">
             <div>Hola</div>
           </Route>
           <Route>
-            <div>Tu</div>
+            <LoggedOutComponent />
           </Route>
         </Switch>
       </Suspense>
-      <AmplifySignOut />
     </MuiThemeProvider>
   </BrowserRouter>
 )
