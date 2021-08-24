@@ -1,12 +1,12 @@
 import React, { FC, memo } from 'react'
 import { Switch } from 'react-router-dom'
-import { makeStyles, Theme } from '@material-ui/core'
+import { StyledComponentProps, Theme, withStyles } from '@material-ui/core'
 
 import PropsRoute from 'shared/components/PropsRoute'
 
 import Dashboard from './dashboard/Dashboard'
 
-const styles = makeStyles((theme: Theme) => ({
+const styles = (theme: Theme) => ({
   wrapper: {
     margin: theme.spacing(1),
     width: 'auto',
@@ -39,17 +39,17 @@ const styles = makeStyles((theme: Theme) => ({
       marginRight: 'auto'
     }
   }
-}))
+})
 
-const Routing: FC = () => {
-  const classes = styles()
+const Routing: FC<StyledComponentProps> = props => {
+  const { classes } = props
   return (
-    <div className={classes.wrapper}>
+    <div className={classes?.wrapper}>
       <Switch>
-        <PropsRoute path="" component={Dashboard} />
+        <PropsRoute path="/app" component={Dashboard} />
       </Switch>
     </div>
   )
 }
 
-export default memo(Routing)
+export default withStyles(styles, { withTheme: true })(memo(Routing))
