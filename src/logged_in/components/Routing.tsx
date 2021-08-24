@@ -46,7 +46,7 @@ const Routing: FC = () => {
   return (
     <div className={classes.wrapper}>
       <Switch>
-        <PropsRoute path="" component={Dashboard} />
+        <PropsRoute path="/app" component={Dashboard} />
       </Switch>
     </div>
   )

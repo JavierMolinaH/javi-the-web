@@ -1,7 +1,7 @@
 import React, { FC, lazy, Suspense } from 'react'
 import { MuiThemeProvider, CssBaseline } from '@material-ui/core'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { AmplifySignOut, withAuthenticator } from '@aws-amplify/ui-react'
+import { AmplifySignOut } from '@aws-amplify/ui-react'
 import 'fontsource-roboto'
 
 import Pace from './shared/components/Pace'
@@ -18,7 +18,6 @@ const App: FC = () => (
       <GlobalStyles />
       <Pace color={theme.palette.primary.light} />
       <Suspense fallback={<></>}>
-        <AmplifySignOut />
         <Switch>
           <Route path="/app">
             <LoggedInComponent />
@@ -32,4 +31,4 @@ const App: FC = () => (
   </BrowserRouter>
 )
 
-export default withAuthenticator(App)
+export default App

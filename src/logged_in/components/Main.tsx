@@ -1,5 +1,6 @@
 import React, { FC, memo } from 'react'
 import { makeStyles, Theme } from '@material-ui/core'
+import { AmplifySignOut, withAuthenticator } from '@aws-amplify/ui-react'
 
 import Routing from 'logged_in/components/Routing'
 
@@ -20,9 +21,10 @@ const Main: FC = () => {
   const classes = styles()
   return (
     <main className={classes.main}>
+      <AmplifySignOut />
       <Routing />
     </main>
   )
 }
 
-export default memo(Main)
+export default withAuthenticator(memo(Main))
