@@ -75,7 +75,7 @@ const NavBar: FC<NavBarType> = props => {
     }
   ]
   return (
-    <div className={classes.root}>
+    <div className={classes?.root}>
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
           <div>

@@ -37,7 +37,7 @@ const Main: FC<StyledComponentProps> = props => {
 
   return (
     <>
-      <div className={classes?.wrapper || ''}>
+      <div className={classes?.wrapper}>
         <NavBar
           selectedTab={selectedTab}
           selectTab={setSelectedTab}
