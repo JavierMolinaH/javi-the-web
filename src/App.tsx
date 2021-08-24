@@ -1,7 +1,6 @@
 import React, { FC, lazy, Suspense } from 'react'
 import { MuiThemeProvider, CssBaseline } from '@material-ui/core'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { AmplifySignOut } from '@aws-amplify/ui-react'
 import 'fontsource-roboto'
 
 import Pace from './shared/components/Pace'
