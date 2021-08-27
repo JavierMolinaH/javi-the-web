@@ -5,6 +5,8 @@ import { StyledComponentProps, Theme, withStyles } from '@material-ui/core'
 import PropsRoute from 'shared/components/PropsRoute'
 
 import Dashboard from './dashboard/Dashboard'
+import Posts from './posts/Posts'
+import Subscription from './subscription/Subscription'
 
 const styles = (theme: Theme) => ({
   wrapper: {
@@ -46,7 +48,10 @@ const Routing: FC<StyledComponentProps> = props => {
   return (
     <div className={classes?.wrapper}>
       <Switch>
-        <PropsRoute path="/app" component={Dashboard} />
+        <PropsRoute path="/app/dashboard" component={Dashboard} />
+        <PropsRoute path="/app/posts" component={Posts} />
+        <PropsRoute path="/app/Subscription" component={Subscription} />
+        <PropsRoute path="/app/" component={Dashboard} />
       </Switch>
     </div>
   )
