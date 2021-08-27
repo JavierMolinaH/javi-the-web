@@ -1,7 +1,7 @@
 import React, { FC, memo } from 'react'
 
-const Dashboard: FC = () => {
-  return <div>Dashboard</div>
+const Subscription: FC = () => {
+  return <div>Subscription</div>
 }
 
-export default memo(Dashboard)
+export default memo(Subscription)
