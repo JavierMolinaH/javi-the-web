@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { AppBar, Toolbar, Typography, Button, Hidden, IconButton, withStyles, Theme } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import HomeIcon from '@material-ui/icons/Home'
-import HowToRegIcon from '@material-ui/icons/HowToReg'
 import LockOpenIcon from '@material-ui/icons/LockOpen'
 import BookIcon from '@material-ui/icons/Book'
 import NavigationDrawer from '../../../shared/components/NavigationDrawer'
@@ -36,41 +35,27 @@ type NavBarType = {
   selectedTab: string
   handleMobileDrawerOpen: () => void
   handleMobileDrawerClose: () => void
-  openRegisterDialog: () => void
-  openLoginDialog: () => void
   selectTab: React.Dispatch<React.SetStateAction<string>>
 }
 
 const NavBar: FC<NavBarType> = props => {
-  const {
-    classes,
-    openRegisterDialog,
-    openLoginDialog,
-    handleMobileDrawerOpen,
-    handleMobileDrawerClose,
-    mobileDrawerOpen,
-    selectedTab,
-    selectTab
-  } = props
+  const { classes, handleMobileDrawerOpen, handleMobileDrawerClose, mobileDrawerOpen, selectedTab, selectTab } = props
   const menuItems = [
     {
       link: '/',
       name: 'Home',
+      onClick: () => selectTab('Home'),
       icon: <HomeIcon className="text-white" />
     },
     {
       link: '/blog',
       name: 'Blog',
+      onClick: () => selectTab('Blog'),
       icon: <BookIcon className="text-white" />
     },
     {
-      name: 'Register',
-      onClick: openRegisterDialog,
-      icon: <HowToRegIcon className="text-white" />
-    },
-    {
+      link: '/app',
       name: 'Login',
-      onClick: openLoginDialog,
       icon: <LockOpenIcon className="text-white" />
     }
   ]

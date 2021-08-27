@@ -15,17 +15,6 @@ const Main: FC<StyledComponentProps> = props => {
   const { classes } = props
   const [selectedTab, setSelectedTab] = useState('')
   const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false)
-  const [dialogOpen, setDialogOpen] = useState('')
-
-  const openLoginDialog = useCallback(() => {
-    setDialogOpen('login')
-    setIsMobileDrawerOpen(false)
-  }, [setDialogOpen, setIsMobileDrawerOpen])
-
-  const openRegisterDialog = useCallback(() => {
-    setDialogOpen('register')
-    setIsMobileDrawerOpen(false)
-  }, [setDialogOpen, setIsMobileDrawerOpen])
 
   const handleMobileDrawerOpen = useCallback(() => {
     setIsMobileDrawerOpen(true)
@@ -41,8 +30,6 @@ const Main: FC<StyledComponentProps> = props => {
         <NavBar
           selectedTab={selectedTab}
           selectTab={setSelectedTab}
-          openLoginDialog={openLoginDialog}
-          openRegisterDialog={openRegisterDialog}
           mobileDrawerOpen={isMobileDrawerOpen}
           handleMobileDrawerOpen={handleMobileDrawerOpen}
           handleMobileDrawerClose={handleMobileDrawerClose}

@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, useCallback, useState, FC, memo } from 'react'
+import React, { useRef, useCallback, useState, FC, memo } from 'react'
 import { Link } from 'react-router-dom'
 import classNames from 'classnames'
 import {
@@ -28,6 +28,8 @@ import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew'
 import MenuIcon from '@material-ui/icons/Menu'
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount'
 import { Breakpoint } from '@material-ui/core/styles/createBreakpoints'
+import { Auth } from 'aws-amplify'
+import SideDrawer from './SideDrawer'
 import NavigationDrawer from '../../../shared/components/NavigationDrawer'
 
 const styles: any = makeStyles((theme: Theme) => ({
@@ -126,15 +128,14 @@ const styles: any = makeStyles((theme: Theme) => ({
 }))
 
 type NavBarType = {
-  messages: any[]
   selectedTab: string
+  setSelectedTab: React.Dispatch<React.SetStateAction<string>>
   width: Breakpoint
   classes: any
-  openAddBalanceDialog: () => void
 }
 
 const NavBar: FC<NavBarType> = props => {
-  const { selectedTab, width } = props
+  const { selectedTab, setSelectedTab, width } = props
   const classes = styles()
   // Will be use to make website more accessible by screen readers
   const links = useRef<any>([])
@@ -157,11 +158,21 @@ const NavBar: FC<NavBarType> = props => {
     setIsSideDrawerOpen(false)
   }, [setIsSideDrawerOpen])
 
+  const signOut = useCallback(() => {
+    const logout = async () => {
+      await Auth.signOut()
+    }
+    void logout()
+  }, [])
+
   const menuItems = [
     {
       link: '/app/dashboard',
       name: 'Dashboard',
-      onClick: closeMobileDrawer,
+      onClick: () => {
+        closeMobileDrawer()
+        setSelectedTab('Dashboard')
+      },
       icon: {
         desktop: (
           <DashboardIcon
@@ -175,7 +186,10 @@ const NavBar: FC<NavBarType> = props => {
     {
       link: '/app/posts',
       name: 'Posts',
-      onClick: closeMobileDrawer,
+      onClick: () => {
+        closeMobileDrawer()
+        setSelectedTab('Posts')
+      },
       icon: {
         desktop: (
           <ImageIcon className={selectedTab === 'Posts' ? classes.textPrimary : 'text-white'} fontSize="small" />
@@ -186,7 +200,10 @@ const NavBar: FC<NavBarType> = props => {
     {
       link: '/app/subscription',
       name: 'Subscription',
-      onClick: closeMobileDrawer,
+      onClick: () => {
+        closeMobileDrawer()
+        setSelectedTab('Subscription')
+      },
       icon: {
         desktop: (
           <AccountBalanceIcon
@@ -200,6 +217,7 @@ const NavBar: FC<NavBarType> = props => {
     {
       link: '/',
       name: 'Logout',
+      onClick: signOut,
       icon: {
         desktop: <PowerSettingsNewIcon className="text-white" fontSize="small" />,
         mobile: <PowerSettingsNewIcon className="text-white" />
@@ -248,7 +266,7 @@ const NavBar: FC<NavBarType> = props => {
           <IconButton onClick={openDrawer} color="primary" aria-label="Open Sidedrawer">
             <SupervisorAccountIcon />
           </IconButton>
-          {/* <SideDrawer open={isSideDrawerOpen} onClose={closeDrawer} /> */}
+          <SideDrawer open={isSideDrawerOpen} onClose={closeDrawer} />
         </Toolbar>
       </AppBar>
       <Hidden xsDown>
